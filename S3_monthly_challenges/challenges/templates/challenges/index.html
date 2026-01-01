@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" type="text/css" href="{% static 'challenges/challenges.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'challenges/includes/header.css' %}">
+{% endblock  %}
+
+{% block page_title %}All Challenges{% endblock %}
+
+{% block content %}
+
+{% include "challenges/includes/header.html" with active_page="index" %}
+
+<ul>
+    {% for month in months %}
+    <li>
+        {% comment %} <a href="/challenges/{{ month }}">{{ month|title }}</a> {% endcomment %} {% comment %} url DTL is
+        like reverse {% endcomment %}
+        <a href="{% url 'month-challenge' month %}">{{ month|title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
