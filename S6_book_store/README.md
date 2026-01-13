@@ -1,4 +1,4 @@
-Section for Data & Model SQL Query to database
+# SECTION 6 - ADMIN  Data & Model SQL Query to database
 
 
 - django-admin startproject book_store
@@ -40,7 +40,30 @@ Section for Data & Model SQL Query to database
 
 - Call the model on view app
 
-# SECTION 6 - ADMIN 
+# SECTION 7 - ADMIN 
 
 - python manage.py createsuperuser
-create username & password
+create username & password,
+can pass password
+
+- register Book models on :
+app book_outlet folder - from .models import Book - admin.site.register(Book)
+
+
+# SECTION 8 - Relations 
+
+- One to Many
+create class Author
+and then connect the author on Book models
+author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
+
+- One to One
+create class Address
+and then connect the address on Author models
+address = models.OneToOneField(Address, on_delete=models.SET, null=True)
+
+
+- Many to Many
+create class Country
+and then connect the Country on Book models
+published_countries = models.ManyToManyField(Country)
